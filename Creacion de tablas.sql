@@ -1,4 +1,3 @@
-
 USE DBTP;
 
 CREATE TABLE estadistica (
@@ -95,5 +94,10 @@ CREATE TABLE estadistica_jugador_partido (
     FOREIGN KEY (ejp_idPartido) REFERENCES partido(par_idPartido),
     FOREIGN KEY (ejp_idJugador) REFERENCES jugador(jug_idJugador),
     FOREIGN KEY (ejp_idEstadistica) REFERENCES estadistica(est_idEstadistica)
-
 );
+
+-- BEGIN TRAN
+-- COMMIT
+-- ROLLBACK
+
+-- SELECT * FROM jugador (era para ir viendo las tablas, se va cambiando el nombre)
