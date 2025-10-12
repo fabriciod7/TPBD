@@ -1,29 +1,29 @@
 
-USE DBTP
+USE DBTP;
 
 CREATE TABLE estadistica (
     est_idEstadistica INT NOT NULL PRIMARY KEY,
-    est_descripcion NVARCHAR(50) NOT NULL,
+    est_descripcion NVARCHAR(50) NOT NULL
 );
 
 CREATE TABLE temporada (
     tem_idTemporada INT NOT NULL PRIMARY KEY,
-    tem_descripcion NVARCHAR(50) NOT NULL,
+    tem_descripcion NVARCHAR(50) NOT NULL
 );
 
 CREATE TABLE pais (
     pai_idPais INT NOT NULL PRIMARY KEY,
-    pai_nombre NVARCHAR(50) NOT NULL,
+    pai_nombre NVARCHAR(50) NOT NULL
 );
 
 CREATE TABLE ciudad (
     ciu_idCiudad INT NOT NULL PRIMARY KEY,
-    ciu_nombre NVARCHAR(50) NOT NULL,
+    ciu_nombre NVARCHAR(50) NOT NULL
 );
 
 CREATE TABLE conferencia (
     con_idConferencia INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    con_nombre NVARCHAR(50) NOT NULL,
+    con_nombre NVARCHAR(50) NOT NULL
 );
 
 CREATE TABLE division (
@@ -62,14 +62,14 @@ CREATE TABLE partido (
     par_fecha DATE NOT NULL,
     par_idLocal INT NOT NULL,
     par_idVisitante INT NOT NULL,
-    par_puntosLocal int NOT NULL CHECK (par_puntosLocal >= 0),
+    par_puntosLocal INT NOT NULL CHECK (par_puntosLocal >= 0),
     par_puntosVisitante INT NOT NULL CHECK (par_puntosVisitante >= 0),
     FOREIGN KEY (par_idTemporada) REFERENCES temporada(tem_idTemporada),
     FOREIGN KEY (par_idLocal) REFERENCES equipo(equ_idEquipo),
-    FOREIGN KEY (par_idVisitante) REFERENCES equipo(equ_idEquipo),
+    FOREIGN KEY (par_idVisitante) REFERENCES equipo(equ_idEquipo)
 );
 
-CREATE TABLE jugador_equipo(
+CREATE TABLE jugador_equipo (
     je_idJugador INT NOT NULL,
     je_idEquipo INT NOT NULL,
     je_nroCamiseta NVARCHAR(5),
@@ -95,4 +95,5 @@ CREATE TABLE estadistica_jugador_partido (
     FOREIGN KEY (ejp_idPartido) REFERENCES partido(par_idPartido),
     FOREIGN KEY (ejp_idJugador) REFERENCES jugador(jug_idJugador),
     FOREIGN KEY (ejp_idEstadistica) REFERENCES estadistica(est_idEstadistica)
+
 );
